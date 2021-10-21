@@ -17,16 +17,19 @@ import com.UserService.Service.IUserService;
 
 
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/test")
 public class UserController {
 	
 	
 	@Autowired
 	IUserService userService;
 
-	
+	@GetMapping("/users")
+	public String get() {
+		return "Public Content.";
+	}
 	
 	@PostMapping("/register")
 	@ResponseBody

@@ -34,7 +34,7 @@ import com.UserService.Security.services.UserDetailsImpl;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/api/user")
 public class AuthController {
 	@Autowired
 	AuthenticationManager authenticationManager;
@@ -50,6 +50,7 @@ public class AuthController {
 
 	@Autowired
 	JwtUtils jwtUtils;
+	
 
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {

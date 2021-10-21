@@ -32,7 +32,6 @@ public class User implements Serializable {
 	private String email;
 	
 	@NotBlank
-	@Size(max = 20)
 	private String password;
 	
 	@ManyToMany(fetch = FetchType.LAZY)
