@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.CategoryService.service.CategoryService;
 import com.CategoryService.entities.Category;
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/apicategory")
 
 public class CategoryController {
 

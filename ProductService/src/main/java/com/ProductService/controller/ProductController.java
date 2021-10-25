@@ -17,7 +17,7 @@ import com.ProductService.Entity.Product;
 import com.ProductService.service.ProductService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/apiproduct")
 
 public class ProductController {
 
