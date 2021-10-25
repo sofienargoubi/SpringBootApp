@@ -1,0 +1,60 @@
+server:
+  port: 8888
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+spring:
+  application:
+    name: api-gateway
+  cloud:      
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+
+      routes:
+      
+      - id: user-service
+        uri: http://localhost:8084
+        predicates:
+        - Path=/api/user/**
+        
+      - id: order-service
+        uri: http://localhost:8085
+        predicates:
+        - Path=/api/order/**
+        
+      - id: livraison-service
+        uri: lb://livraison-service
+        predicates:
+        - Path=/apilivraison
+        
+      - id: feedback-service
+        uri: lb://feedback-service
+        predicates:
+        - Path=/apicomment
+        
+      - id: event-service
+        uri: lb://event-service
+        predicates:
+        - Path=/api/event
+
+      - id: reclamation-service
+        uri: lb://reclamation-service
+        predicates:
+        - Path=/api/reclamation
+        
+      - id: product-service
+        uri: lb://product-service
+        predicates:
+        - Path=/api/product
+        
+      
+      - id: category-service
+        uri: lb://category-service
+        predicates:
+        - Path=/api/category
