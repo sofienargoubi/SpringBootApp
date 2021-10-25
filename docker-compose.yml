@@ -1,28 +1,37 @@
 version: "3.9"
 services:
   eureka:
-    build:  /eureka-server
+    build:  /SpringBootApp/EurekaServer
     ports:
       - "8761:8761"
-    image: "eureka-server"
-  user_service:
-    build: ../../user_service
+    image: "eurekaserver"
+  config:
+    build: /SpringBootApp/configuration-server
+    command: --spring.profiles.active=native
     environment: 
-      - eureka.client.serviceUrl.defaultZone=http://discovery:8761/eureka/
+     - spring.cloud.config.server.git.uri=https://github.com/louayyahyaoui/-microservices-config-server.git
     ports:
-      - "8084:8084"
-    image: "user_service"
- order_service:
-    build: ../../order_service
-    environment: 
-      - eureka.client.serviceUrl.defaultZone=http://discovery:8761/eureka/
-    ports:
-      - "8085:8085"
-    image: "order_service"
+      - "8880:8880"
+    image: "configuration-server"
   gateway:
-    build: /api-gateway-server
+    build: /SpringBootApp/api-gateway
     environment: 
       - eureka.client.serviceUrl.defaultZone=http://discovery:8761/eureka/
     ports:
       - "8888:8888"
-    image: "api-gateway-server"
+    image: "api-gateway"
+  user_service:
+    build: /SpringBootApp/user-service
+    environment: 
+      - eureka.client.serviceUrl.defaultZone=http://discovery:8761/eureka/
+    ports:
+      - "8084:8084"
+    image: "user-service"
+  order_service:
+    build: /SpringBootApp/order-service
+    environment: 
+      - eureka.client.serviceUrl.defaultZone=http://discovery:8761/eureka/
+    ports:
+      - "8085:8085"
+    image: "order-service"
+
