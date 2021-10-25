@@ -31,12 +31,12 @@ spring:
       - id: livraison-service
         uri: lb://livraison-service
         predicates:
-        - Path=/apilivraison
+        - Path=/apilivraison/**
         
       - id: feedback-service
         uri: lb://feedback-service
         predicates:
-        - Path=/apicomment
+        - Path=/apicomment/**
         
       - id: event-service
         uri: lb://event-service
@@ -51,10 +51,10 @@ spring:
       - id: product-service
         uri: lb://product-service
         predicates:
-        - Path=/api/product
+        - Path=/api/product/**
         
       
       - id: category-service
         uri: lb://category-service
         predicates:
-        - Path=/api/category
+        - Path=/api/category/**
