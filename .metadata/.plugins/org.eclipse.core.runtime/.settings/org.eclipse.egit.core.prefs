@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 GitRepositoriesView.GitDirectories=E\:\\5eme\\Projet Micro Service\\SpringBootApp\\.git;
+=======
+GitRepositoriesView.GitDirectories=C\:\\SpringBootApp\\.git;
+>>>>>>> 4657674a51ff741008a7ce59cbcdbe1ab5c54bbf
 GitRepositoriesView.GitDirectories.relative=.git;
 core_autoIgnoreDerivedResources=false
 eclipse.preferences.version=1
