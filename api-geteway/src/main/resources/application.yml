@@ -30,12 +30,12 @@ spring:
       - id: event-service
         uri: lb://event-service
         predicates:
-        - Path=/api/event
+        - Path=/api/event/**
 
       - id: reclamation-service
         uri: lb://reclamation-service
         predicates:
-        - Path=/api/reclamation
+        - Path=/api/reclamation/**
         
       - id: product-service
         uri: lb://product-service
