@@ -36,3 +36,12 @@ spring:
         uri: lb://reclamation-service
         predicates:
         - Path=/api/reclamation
+        
+      - id: product-service
+        uri: lb://product-service
+        predicates:
+        - Path=/api/product
+      - id: category-service
+        uri: lb://category-service
+        predicates:
+        - Path=/api/category
