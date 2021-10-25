@@ -38,10 +38,10 @@ spring:
         - Path=/api/reclamation
         
       - id: product-service
-        uri: lb://product-service
+        uri: lb://PRODUCT-SERVICE
         predicates:
-        - Path=/api/product
+          - Path=/apiproduct/**
       - id: category-service
-        uri: lb://category-service
+        uri: lb://CATEGORY-SERVICE
         predicates:
-        - Path=/api/category
+          - Path=/apicategory/**
