@@ -17,6 +17,7 @@ spring:
           lower-case-service-id: true
 
       routes:
+      
       - id: user-service
         uri: http://localhost:8084
         predicates:
@@ -26,7 +27,17 @@ spring:
         uri: http://localhost:8085
         predicates:
         - Path=/api/order/**
-
+        
+      - id: livraison-service
+        uri: lb://livraison-service
+        predicates:
+        - Path=/apilivraison
+        
+      - id: feedback-service
+        uri: lb://feedback-service
+        predicates:
+        - Path=/apicomment
+        
       - id: event-service
         uri: lb://event-service
         predicates:
@@ -36,3 +47,14 @@ spring:
         uri: lb://reclamation-service
         predicates:
         - Path=/api/reclamation
+        
+      - id: product-service
+        uri: lb://product-service
+        predicates:
+        - Path=/api/product
+        
+      
+      - id: category-service
+        uri: lb://category-service
+        predicates:
+        - Path=/api/category
