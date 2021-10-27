@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 import com.feedback.Entity.Comment;
 import com.feedback.service.CommentService;
@@ -60,6 +60,14 @@ public class CommentController {
 	public ResponseEntity<Comment> updateComment(@PathVariable("id") long id, @RequestBody Comment Comment) {
 		return ((commentService.update(Comment, id) != null)
 				? new ResponseEntity<>(commentService.update(Comment, id), HttpStatus.CREATED)
+				: new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR));
+	}
+	
+	
+	@DeleteMapping("/comment/{id}")
+	public ResponseEntity<Comment> deleteComment(@PathVariable("id") long id) {
+		return ((commentService.delete(id))
+				? new ResponseEntity<>(null, HttpStatus.CREATED)
 				: new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR));
 	}
 
