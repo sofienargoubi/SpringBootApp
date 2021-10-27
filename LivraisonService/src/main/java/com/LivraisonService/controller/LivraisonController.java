@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 import com.LivraisonService.Livraison;
 import com.LivraisonService.service.LivraisonService;
@@ -61,6 +62,13 @@ public class LivraisonController {
 	public ResponseEntity<Livraison> updateLivraison(@PathVariable("id") long id, @RequestBody Livraison Livraison) {
 		return ((livraisonService.update(Livraison, id) != null)
 				? new ResponseEntity<>(livraisonService.update(Livraison, id), HttpStatus.CREATED)
+				: new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR));
+	}
+	
+	@DeleteMapping("/livraison/{id}")
+	public ResponseEntity<Livraison> deleteLivraison(@PathVariable("id") long id) {
+		return ((livraisonService.delete(id))
+				? new ResponseEntity<>(null, HttpStatus.CREATED)
 				: new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR));
 	}
 
