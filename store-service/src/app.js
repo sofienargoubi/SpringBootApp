@@ -22,5 +22,8 @@ app.post("/api/store", async (req, res) => {
   const savedBook = await store.save();
   res.json(savedBook);
 });
-
+app.delete("/api/store", async (req, res) => {
+  const savedBook = await Store.deleteOne({_id:req.params.id});
+  res.json(savedBook);
+});
 module.exports = app;
