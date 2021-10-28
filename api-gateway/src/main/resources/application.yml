@@ -4,7 +4,9 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://eureka-server:8761/eureka
+  instance:
+    prefer-ip-address: true
 
 spring:
   application:
@@ -19,12 +21,12 @@ spring:
       routes:
       
       - id: user-service
-        uri: http://localhost:8084
+        uri: lb://user-service
         predicates:
         - Path=/api/user/**
         
       - id: order-service
-        uri: http://localhost:8085
+        uri: lb://order-service
         predicates:
         - Path=/api/order/**
         

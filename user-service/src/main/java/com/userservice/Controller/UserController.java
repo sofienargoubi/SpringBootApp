@@ -41,12 +41,6 @@ public class UserController {
 		return user;
 	}
 	
-	@GetMapping("/Users")
-	@ResponseBody
-	public List<User> getAllUsers() {
-			
-		return userService.getAllUsers();
-	}
 	
 	@GetMapping("/all")
 	public String allAccess() {
