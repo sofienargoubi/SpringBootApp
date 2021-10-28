@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.CategoryService.service.CategoryService;
 import com.CategoryService.entities.Category;
+
 @RestController
 @RequestMapping("/apicategory")
 
@@ -22,7 +24,7 @@ public class CategoryController {
 
 	@Autowired
 	CategoryService categoryservice;
-	
+
 	@GetMapping("/categories")
 	public ResponseEntity<List<Category>> getAllProduct() {
 		try {
@@ -43,7 +45,7 @@ public class CategoryController {
 	public ResponseEntity<Category> getProductById(@PathVariable("id") long id) {
 		return ((categoryservice.findOneById(id) != null)
 				? new ResponseEntity<>(categoryservice.findOneById(id), HttpStatus.CREATED)
-				: new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR));
+				: new ResponseEntity<>(new Category(null, null), HttpStatus.CREATED));
 
 	}
 
@@ -61,4 +63,11 @@ public class CategoryController {
 				? new ResponseEntity<>(categoryservice.update(Category, id), HttpStatus.CREATED)
 				: new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR));
 	}
+
+	@DeleteMapping("/category/{id}")
+	public String deleteEmployee(@PathVariable Long id) {
+
+		return ((categoryservice.delete(id)) ? "category has been deleted successfully" : "category not deleted");
+	}
+
 }

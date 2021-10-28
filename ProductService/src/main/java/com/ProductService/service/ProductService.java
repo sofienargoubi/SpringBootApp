@@ -43,7 +43,7 @@ public class ProductService implements IProductService {
 
 	@Override
 	public boolean delete(Long idProduct) {
-		Product prod=productRepository.findById(idProduct).get();
+		Product prod=productRepository.findById(idProduct).orElse(null);
 		if(prod!=null)
 		{
 			productRepository.deleteById(idProduct);
