@@ -115,6 +115,14 @@ services:
     depends_on:
       - eureka-server
       - configuration-server
+  store-service:
+    build: /SpringBootApp/store-service
+    ports:
+      - "3000:3000"
+    image: "store-service"
+    depends_on:
+      - eureka-server
+
 
  
 
