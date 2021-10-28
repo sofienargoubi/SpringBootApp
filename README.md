@@ -8,7 +8,7 @@
 <!-- Name -->
 
 <h2 align="center" >
-  Spring Boot architecture micro service 
+  Spring Boot architecture microservices 
 </h2>
 
 <!-- Badges -->
