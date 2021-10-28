@@ -43,7 +43,7 @@ this application is developed as a mini education project, it translates the dev
 - Run the EurekaServer project first
 - Next run the api-gateway project 
 - Next run each project remaining
-- Go to http://localhost:3000 and Enjoy ;)
+- enjoy differents HTPPS requests (POST/PUT/GET/DELETE) with http://localhost:8888
 
 ## :bulb: Devoloped With :
 
